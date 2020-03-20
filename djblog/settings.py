@@ -73,8 +73,6 @@ TEMPLATES = [
     },
 ]
 
-
-
 WSGI_APPLICATION = 'djblog.wsgi.application'
 
 # Database
@@ -125,3 +123,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media_itr/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+
+# Auth
