@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # libs
+    'django_activeurl',
+    'bootstrap4',
+    # apps
     'djblog.core',
 ]
 
