@@ -73,6 +73,8 @@ TEMPLATES = [
     },
 ]
 
+
+
 WSGI_APPLICATION = 'djblog.wsgi.application'
 
 # Database
