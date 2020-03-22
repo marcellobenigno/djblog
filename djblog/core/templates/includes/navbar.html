@@ -1,7 +1,13 @@
 {% load activeurl %}
 
 <nav class="navbar navbar- navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="{% url 'core:index' %}">
+    <a class="navbar-brand"
+            {% if user.is_authenticated %}
+       href="{% url 'core:home' %}"
+            {% else %}
+       href="{% url 'core:index' %}"
+            {% endif %}
+    >
         <i class="fab fa-python"></i>
         DjBlog
     </a>
