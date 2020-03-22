@@ -1,5 +1,5 @@
-# djblog
-Um blog criado com python e django
+# Djblog
+Um blog criado com Django.
 
 
 ## Como desenvolver?
