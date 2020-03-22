@@ -1,4 +1,4 @@
-# Djblog
+# DjBlog
 Um blog criado com Django.
 
 
