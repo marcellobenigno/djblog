@@ -1,4 +1,5 @@
 {% load static %}
+{% load bootstrap4 %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{% static 'img/favicon.png' %}">
-
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
     <title>DjBlog</title>
 
+    <script src="{% static 'fonts/35c71fb786.js' %}" crossorigin="anonymous"></script>
     <link href="{% static 'assets/bootstrap4.0/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
@@ -18,22 +19,22 @@
 
 <body>
 
-
 {% include 'includes/navbar.html' %}
 
+{% bootstrap_messages %}
+
 <main role="main" class="container pt-5">
+
     {% block content %}
     {% endblock content %}
 </main>
 
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
 <script src="{% static 'assets/jquery-3.2.1/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'assets/vendor/popper.min.js' %}"></script>
 <script src="{% static 'assets/bootstrap4.0/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'assets/vendor/holder.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
 
 </body>
 </html>

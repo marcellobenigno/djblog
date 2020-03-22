@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     # apps
     'djblog.core',
+    'djblog.account',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,12 @@ MEDIA_URL = '/media_itr/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
 # Auth
+AUTH_USER_MODEL = 'account.User'
+
+LOGIN_URL = 'account:login'
+LOGIN_REDIRECT_URL = 'core:home'
+LOGOUT_URL = 'account:logout'
+
+AUTHENTICATION_BACKENDS = (
+    'djblog.account.backends.ModelBackend',
+)

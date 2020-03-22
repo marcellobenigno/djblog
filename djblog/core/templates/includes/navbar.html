@@ -1,7 +1,10 @@
 {% load activeurl %}
 
 <nav class="navbar navbar- navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="{% url 'core:index' %}">DjBlog</a>
+    <a class="navbar-brand" href="{% url 'core:index' %}">
+        <i class="fab fa-python"></i>
+        DjBlog
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,10 +14,25 @@
         {% activeurl %}
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'core:index' %}">Início</a>
+                    {% if user.is_authenticated %}
+                        <a class="nav-link" href="{% url 'core:home' %}">
+                            <i class="fas fa-home"></i>
+                            Início
+                        </a>
+                    {% endif %}
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/">Admin</a>
+                    {% if not user.is_authenticated %}
+                        <a class="nav-link" href="{% url 'account:login' %}">
+                            <i class="fa fa-sign-in"></i>
+                            Entrar
+                        </a>
+                    {% else %}
+                        <a class="nav-link" href="{% url 'accounts:logout' %}">
+                            <i class="fa fa-sign-out"></i>
+                            Sair
+                        </a>
+                    {% endif %}
                 </li>
             </ul>
         {% endactiveurl %}
