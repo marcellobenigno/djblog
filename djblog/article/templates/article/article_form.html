@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>
+                <i class="fa fa-edit"></i>
+                Editar Postagem:
+            </h1>
+            <small>
+                {{ object }}
+            </small>
+            <hr>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            {% bootstrap_form_errors form %}
+            <form action="" method="post" class="form">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <button class="btn btn-primary" type="submit">
+                    <i class="fa fa-edit"></i>
+                    Editar
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

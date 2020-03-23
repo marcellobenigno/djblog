@@ -13,14 +13,18 @@
                     <div class="card-body d-flex flex-column align-items-start">
                         <strong class="d-inline-block mb-2 text-primary">Por: {{ obj.author }}</strong>
                         <h3 class="mb-0">
-                            <a class="text-dark" href="#">{{ obj.title }}</a>
+                            <a class="text-dark" href="{% url 'article:article_detail' obj.slug %}">{{ obj.title }}</a>
                         </h3>
-                        <div class="mb-1 text-muted">{{ obj.created }}</div>
-                        <p class="card-text mb-auto">
+                        <div class="mb-1 text-muted">
+                            <em>{{ obj.created }}</em>
+                        </div>
+                        <p class="card-text mb-auto text-justify">
                             {{ obj.body|truncatewords:40 }}
                         </p>
 
-                        <a href="#">Continue lendo</a>
+                        <a href="{% url 'article:article_detail' obj.slug %}">
+                            Continue lendo
+                        </a>
                     </div>
                     <img class="card-img-right flex-auto d-none d-md-block"
                          src="https://picsum.photos/id/{{ obj.pk }}/200/250"

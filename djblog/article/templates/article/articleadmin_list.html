@@ -24,8 +24,12 @@
                 {% for obj in object_list %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td>{{ obj.title }}</td>
-                        <td>{{ obj.body|truncatechars:20 }}</td>
+                        <td>
+                            <a href="{% url 'article:article_detail' obj.slug %}">
+                                {{ obj.title }}
+                            </a>
+                        </td>
+                        <td>{{ obj.body|truncatewords:6 }}</td>
                         <td>
                             {% if obj.active %}
                                 <i class="fas fa-check-circle text-success"></i>
@@ -37,7 +41,7 @@
                         <td>{{ obj.created|date:'d/m/Y G:i:s' }}</td>
                         <td>{{ obj.updated|date:'d/m/Y G:i:s' }}</td>
                         <td>
-                            <a href="#" role="button"
+                            <a href="{% url 'article:article_update' obj.slug %}" role="button"
                                class="btn btn-primary">
                                 <i class="fa fa-edit"></i>
                             </a>

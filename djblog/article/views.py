@@ -1,6 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.views.generic import ListView, UpdateView, DetailView
 
+from .forms import ArticleForm
 from .models import Article
 
 
@@ -23,5 +25,30 @@ class ArticleAdminListView(LoginRequiredMixin, ListView):
         )
 
 
-article_list = ArticleListView.as_view()
+class ArticleUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    form_class = ArticleForm
+    model = Article
+    success_message = 'Postagem editada com sucesso!'
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['author'] = self.request.user
+        return kwargs
+
+
+class ArticleDetailView(DetailView):
+    model = Article
+
+    def get_object(self, queryset=None):
+        return Article.objects.get(
+            slug=self.kwargs['slug']
+        )
+
+
 article_admin_list = ArticleAdminListView.as_view()
+
+article_detail = ArticleDetailView.as_view()
+
+article_update = ArticleUpdateView.as_view()
+
+article_list = ArticleListView.as_view()
