@@ -27,11 +27,19 @@
                     </p>
 
                     {% if article.author == user %}
-                        <a href="{% url 'article:article_update' object.slug %}" role="button"
-                           class="btn btn-primary">
-                            <i class="fa fa-pencil"></i>
-                            Editar
-                        </a>
+                        <p>
+                            <a href="{% url 'article:article_update' object.slug %}" role="button"
+                               class="btn btn-primary">
+                                <i class="fa fa-pencil"></i>
+                                Editar
+                            </a>
+                            <a href="{% url 'article:article_delete' object.slug %}" role="button"
+                               class="btn btn-danger">
+                                <i class="fa fa-trash"></i>
+                                Apagar
+                            </a>
+                        </p>
+
                     {% endif %}
                 </div>
                 <img class="card-img-right flex-auto d-none d-md-block"

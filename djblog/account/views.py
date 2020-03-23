@@ -13,7 +13,7 @@ class Login(SuccessMessageMixin, LoginView):
     template_name = 'account/login.html'
     form_class = LoginForm
     redirect_authenticated_user = True
-    success_message = "Seja bem vindo ao DjBlog!"
+    success_message = "Seja bem-vindo(a) ao DjBlog!"
 
 
 class SignInView(CreateView):

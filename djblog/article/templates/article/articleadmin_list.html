@@ -8,12 +8,20 @@
                 Gerenciar Postagens
             </h1>
             <hr>
+
+            <p>
+                <a href="{% url 'article:article_create' %}" role="button"
+                   class="btn btn-primary">
+                    <i class="fa fa-plus"></i>
+                    Nova Postagem
+                </a>
+            </p>
+
             <table class="table table-outline table-hover table-bordered">
                 <thead class="thead-light">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Título</th>
-                    <th scope="col">Texto</th>
                     <th scope="col">Ativo</th>
                     <th scope="col">Criado</th>
                     <th scope="col">Alterado</th>
@@ -29,7 +37,6 @@
                                 {{ obj.title }}
                             </a>
                         </td>
-                        <td>{{ obj.body|truncatewords:6 }}</td>
                         <td>
                             {% if obj.active %}
                                 <i class="fas fa-check-circle text-success"></i>
@@ -45,8 +52,8 @@
                                class="btn btn-primary">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <a href="#" role="button"
-                               class="btn btn-primary">
+                            <a href="{% url 'article:article_delete' obj.slug %}" role="button"
+                               class="btn btn-danger">
                                 <i class="fa fa-trash"></i>
                             </a>
                         </td>

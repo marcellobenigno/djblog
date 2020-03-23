@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>
+                Apagar postagem
+            </h1>
+            <small>
+                {{ object }}
+            </small>
+            <hr>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-danger" role="alert">
+                <h3>
+                    Cuidado! Esta ação eliminará este registro do sistema.
+                </h3>
+            </div>
+
+            <form class="form" method="post">
+                {% csrf_token %}
+                <p>Tem certeza que quer apagar a postagem <strong>{{ object }}</strong>?</p>
+                {% buttons %}
+                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Apagar</button>
+                {% endbuttons %}
+            </form>
+            <hr>
+            <a class="btn btn-info" href="{% url 'article:article_admin_list' %}"
+               role="button"><i class="fa fa-arrow-left"></i> Voltar
+            </a>
+        </div>
+    </div>
+{% endblock %}
