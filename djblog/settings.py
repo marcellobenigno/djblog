@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # apps
     'djblog.core',
     'djblog.account.apps.AccountConfig',
+    'djblog.article.apps.ArticleConfig',
 ]
 
 MIDDLEWARE = [
@@ -129,7 +130,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 AUTH_USER_MODEL = 'account.User'
 
 LOGIN_URL = 'account:login'
-LOGIN_REDIRECT_URL = 'core:home'
+LOGIN_REDIRECT_URL = 'article:article_admin_list'
 LOGOUT_URL = 'account:logout'
 
 AUTHENTICATION_BACKENDS = (

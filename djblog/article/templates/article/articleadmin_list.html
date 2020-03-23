@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>
+                <i class="fas fa-pen-nib"></i>
+                Gerenciar Postagens
+            </h1>
+            <hr>
+            <table class="table table-outline table-hover table-bordered">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Texto</th>
+                    <th scope="col">Ativo</th>
+                    <th scope="col">Criado</th>
+                    <th scope="col">Alterado</th>
+                    <th scope="col">Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for obj in object_list %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ obj.title }}</td>
+                        <td>{{ obj.body|truncatechars:20 }}</td>
+                        <td>
+                            {% if obj.active %}
+                                <i class="fas fa-check-circle text-success"></i>
+                            {% else %}
+                                <i class="fas fa-times-circle text-danger"></i>
+                            {% endif %}
+
+                        </td>
+                        <td>{{ obj.created|date:'d/m/Y G:i:s' }}</td>
+                        <td>{{ obj.updated|date:'d/m/Y G:i:s' }}</td>
+                        <td>
+                            <a href="#" role="button"
+                               class="btn btn-primary">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="#" role="button"
+                               class="btn btn-primary">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
