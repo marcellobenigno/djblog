@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>
+                <i class="fas fa-user-edit"></i>
+                Editar Conta
+            </h1>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <p>
+                <a href="{% url 'account:update_user' %}" role="button" class="btn btn-primary btn-block">
+                    <i class="fa fa-user"></i>
+                    Editar dados pessoais
+                </a>
+            </p>
+            <p>
+                <a href="{% url 'account:update_password' %}" role="button" class="btn btn-primary btn-block">
+                    <i class="fa fa-key"></i>
+                    Editar senha
+                </a>
+            </p>
+        </div>
+    </div>
+
+{% endblock content %}

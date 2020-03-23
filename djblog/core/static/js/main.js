@@ -12,4 +12,6 @@ $(function () {
     };
     $('#id_phone').mask(MaskBehavior, spOptions);
 
+    $('[data-toggle="tooltip"]').tooltip()
+
 });

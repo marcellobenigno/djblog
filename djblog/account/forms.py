@@ -57,3 +57,9 @@ class SignInForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['name', 'email', 'phone', 'password', 'confirm_password', ]
+
+
+class UpdateUserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['name', 'email', 'phone', ]
