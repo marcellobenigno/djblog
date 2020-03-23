@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     # apps
     'djblog.core',
-    'djblog.account',
+    'djblog.account.apps.AccountConfig',
 ]
 
 MIDDLEWARE = [
