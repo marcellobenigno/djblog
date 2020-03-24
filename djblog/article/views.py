@@ -54,15 +54,11 @@ class ArticleDetailView(DetailView):
 class ArticleDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Article
     form_class = ArticleForm
-    success_url = reverse_lazy('article:article_admin_list')
+    success_url = reverse_lazy('article:article_panel_list')
     success_message = "Postagem apagada com sucesso!"
 
     def delete(self, request, *args, **kwargs):
-        obj = Article.objects.get(
-            author=self.request.user,
-            slug=self.kwargs['slug']
-        )
-        messages.success(self.request, self.success_message % obj.__dict__)
+        messages.success(self.request, self.success_message)
         return super(ArticleDelete, self).delete(request, *args, **kwargs)
 
 
