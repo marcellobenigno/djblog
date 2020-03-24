@@ -1,0 +1,35 @@
+<form action="" method="GET" id="search-form" class="form-inline float-sm-right">
+    <input type="text" name="v"
+           class="form-control" id="id_search_box"
+           value="{{ v|default_if_none:'' }}"
+           placeholder="buscar"/>
+    <span class="input-group-btn">
+                    <button type="submit" class="sh1 btn btn-secondary">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+    {% if v %}
+        {% if user.is_authenticated %}
+            <a href="{% url 'article:article_panel_list' %}"
+               class="btn btn-warning">
+                <i class="fas fa-undo"></i>
+                <span></span></a>
+        {% else %}
+            <a href="{% url 'article:article_public_list' %}"
+               class="btn btn-warning">
+                <i class="fas fa-undo"></i>
+                <span></span></a>
+        {% endif %}
+
+    {% endif %}
+</form>
+
+{% if v %}
+    {% with total=total_itens %}
+        <h5 class="text-success">RESULTADO DA PESQUISA: {{ total }}
+            registro{{ total|pluralize }}
+            com o termo pesquisado:
+            <strong>{{ v }}</strong>
+        </h5>
+    {% endwith %}
+{% endif %}

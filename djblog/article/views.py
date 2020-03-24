@@ -5,26 +5,19 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, UpdateView, DetailView, CreateView, DeleteView
 
 from .forms import ArticleForm
+from .mixins import SearchPanelMixin
 from .models import Article
 
 
-class ArticlePublicListView(ListView):
+class ArticlePublicListView(SearchPanelMixin, ListView):
+    model = Article
     paginate_by = 2
 
-    def get_queryset(self):
-        return Article.objects.filter(
-            active=True
-        )
 
-
-class ArticlePanelListView(LoginRequiredMixin, ListView):
+class ArticlePanelListView(LoginRequiredMixin, SearchPanelMixin, ListView):
+    model = Article
     template_name = 'article/article_panel_list.html'
     paginate_by = 5
-
-    def get_queryset(self):
-        return Article.objects.filter(
-            author=self.request.user
-        )
 
 
 class ArticleCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
