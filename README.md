@@ -24,3 +24,13 @@ createdb djblog
 python manage.py migrate
 python manage.py test
 ```
+
+
+## Como instalar o tema do Django-Admin?
+
+1. Carregue os dados a partir do arquivo `fixtures/admin_djblog.json`:
+
+
+```console
+python manage.py loaddata fixtures/admin_djblog.json
+```
