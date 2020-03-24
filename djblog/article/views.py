@@ -8,7 +8,7 @@ from .forms import ArticleForm
 from .models import Article
 
 
-class ArticleSiteListView(ListView):
+class ArticlePublicListView(ListView):
     paginate_by = 2
 
     def get_queryset(self):
@@ -17,8 +17,8 @@ class ArticleSiteListView(ListView):
         )
 
 
-class ArticleAdminListView(LoginRequiredMixin, ListView):
-    template_name = 'article/articleadmin_list.html'
+class ArticlePanelListView(LoginRequiredMixin, ListView):
+    template_name = 'article/article_panel_list.html'
     paginate_by = 5
 
     def get_queryset(self):
@@ -73,7 +73,7 @@ class ArticleDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         return super(ArticleDelete, self).delete(request, *args, **kwargs)
 
 
-article_admin_list = ArticleAdminListView.as_view()
+article_panel_list = ArticlePanelListView.as_view()
 
 article_detail = ArticleDetailView.as_view()
 
@@ -81,6 +81,6 @@ article_create = ArticleCreateView.as_view()
 
 article_update = ArticleUpdateView.as_view()
 
-article_list = ArticleSiteListView.as_view()
+article_public_list = ArticlePublicListView.as_view()
 
 article_delete = ArticleDelete.as_view()

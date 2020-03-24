@@ -47,10 +47,17 @@
                      data-holder-rendered="true">
 
             </div>
-            <a href="{% url 'article:article_list' %}">
-                <i class="fa fa-arrow-left"></i>
-                Voltar
-            </a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'article:article_panel_list' %}">
+                    <i class="fa fa-arrow-left"></i>
+                    Voltar
+                </a>
+            {% else %}
+                <a href="{% url 'article:article_public_list' %}">
+                    <i class="fa fa-arrow-left"></i>
+                    Voltar
+                </a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

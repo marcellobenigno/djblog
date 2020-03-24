@@ -130,7 +130,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 AUTH_USER_MODEL = 'account.User'
 
 LOGIN_URL = 'account:login'
-LOGIN_REDIRECT_URL = 'article:article_admin_list'
+LOGIN_REDIRECT_URL = 'article:article_panel_list'
 LOGOUT_URL = 'account:logout'
 
 AUTHENTICATION_BACKENDS = (
