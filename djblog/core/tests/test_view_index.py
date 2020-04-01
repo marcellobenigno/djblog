@@ -14,6 +14,6 @@ class TestViewIndex(TestCase):
         """Must use index.html"""
         self.assertTemplateUsed(self.response, 'core/index.html')
 
-    def test_admin_link(self):
-        expected = 'href="{}"'.format(r('/admin/'))
+    def test_login_link(self):
+        expected = 'href="{}"'.format(r('account:login'))
         self.assertContains(self.response, expected)
