@@ -28,7 +28,13 @@ class TestPostValidLoginView(TestCase):
             'password': 'ThisIsaTest.123'
         }
         User.objects.create_user(**self.credentials)
-        self.resp = self.client.post(r('account:login'), self.credentials, follow=True)
+        self.resp = self.client.post(
+            r('account:login'), {
+                'username': 'jhon.doe@gmail.com',
+                'password': 'ThisIsaTest.123'
+            },
+            follow=True
+        )
 
     def test_create_valid_user(self):
         """User should be created with valid credentials"""
