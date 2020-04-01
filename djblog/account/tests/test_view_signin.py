@@ -5,7 +5,7 @@ from ...account.forms import SignInForm
 from ...account.models import User
 
 
-class TestSignInView(TestCase):
+class TestGetSignInView(TestCase):
     def setUp(self):
         self.resp = self.client.get(r('account:signin'))
 
@@ -56,9 +56,14 @@ class TestInvalidPostSignInView(TestCase):
 
     def test_post(self):
         """Invalid POST should not redirect"""
-        self.assertEqual(self.resp.status_code, 200)
+        self.assertEqual(200, self.resp.status_code)
 
     def test_has_form(self):
         """Invalid POST must have a form"""
         form = self.resp.context['form']
         self.assertIsInstance(form, SignInForm)
+
+    def test_has_errors(self):
+        """Invalid POST must have a form with errors"""
+        form = self.resp.context['form']
+        self.assertTrue(form.errors)
