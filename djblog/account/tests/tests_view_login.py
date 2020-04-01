@@ -50,10 +50,14 @@ class TestPostValidLoginView(TestCase):
 class TestPostInvalidLoginView(TestCase):
     def setUp(self):
         data = {
-            'email': 'jhon@doe.com',
-            'password': 'Pass.Secret.123'
+            'email': 'some@email.com',
+            'password': 'ThisUserWasNotCreated'
         }
         self.resp = self.client.post(r('account:login'), data)
+
+    def test_user_doesnt_exists(self):
+        """User doesnt exists in database"""
+        self.assertFalse(User.objects.exists())
 
     def test_post(self):
         """Invalid login should not redirect"""
