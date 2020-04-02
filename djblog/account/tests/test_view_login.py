@@ -30,8 +30,8 @@ class TestPostValidLoginView(TestCase):
         User.objects.create_user(**self.credentials)
         self.resp = self.client.post(
             r('account:login'), {
-                'username': 'jhon.doe@gmail.com',
-                'password': 'ThisIsaTest.123'
+                'username': self.credentials['email'],
+                'password': self.credentials['password'],
             },
             follow=True
         )

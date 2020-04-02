@@ -4,7 +4,7 @@ from django.test import TestCase
 from ...account.models import User
 
 
-class TestLogout(TestCase):
+class TestLogoutView(TestCase):
 
     def setUp(self):
         self.user = User.objects.create_user(
@@ -23,5 +23,5 @@ class TestLogout(TestCase):
         self.assertRedirects(self.resp, r('core:index'))
 
     def test_user_logged_out(self):
-        """User should be authenticated"""
+        """User should be logged out"""
         self.assertFalse(self.resp.context['user'].is_authenticated)
