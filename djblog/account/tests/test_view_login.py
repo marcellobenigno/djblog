@@ -40,7 +40,7 @@ class TestPostValidLoginView(TestCase):
         """User should be created with valid credentials"""
         self.assertTrue(User.objects.exists())
 
-    def test_login(self):
+    def test_user_logged_in(self):
         """User should be authenticated"""
         self.assertTrue(self.resp.context['user'].is_authenticated)
 
