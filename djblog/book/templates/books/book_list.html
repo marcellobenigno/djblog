@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static bootstrap4 %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>
+                <i class="far fa-newspaper"></i>
+                Livros
+            </h1>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <p>
+                <button type="button" class="btn btn-primary js-create-book"
+                        data-url="{% url 'book:book_create' %}">
+                    <span class="fa fa-plus"></span>
+                    Novo Livro
+                </button>
+            </p>
+
+            <table id="book-table" class="table table-outline table-hover table-bordered">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Publicado em</th>
+                    <th scope="col">Páginas</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% include 'books/includes/partial_book_list.html' %}
+                </tbody>
+            </table>
+
+            <div class="modal fade" id="modal-book">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/book/book.js' %}"></script>
+{% endblock extra_js %}

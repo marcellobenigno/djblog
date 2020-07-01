@@ -44,10 +44,12 @@ INSTALLED_APPS = [
     'django_extensions',
     'django_activeurl',
     'bootstrap4',
+    'widget_tweaks',
     # apps
     'djblog.core',
     'djblog.account.apps.AccountConfig',
     'djblog.article.apps.ArticleConfig',
+    'djblog.book.apps.BookConfig',
 ]
 
 MIDDLEWARE = [

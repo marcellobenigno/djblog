@@ -1,0 +1,23 @@
+{% for obj in object_list %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ obj.title }}</td>
+        <td>{{ obj.author }}</td>
+        <td>{{ obj.get_book_type_display }}</td>
+        <td>{{ obj.publication_date|date:'d/m/Y' }}</td>
+        <td>{{ obj.pages }}</td>
+        <td>{{ obj.price }}</td>
+        <td>
+            <button type="button"
+                    class="btn btn-warning btn-sm js-update-book"
+                    data-url="{% url 'book:book_update' obj.pk %}">
+                <span class="glyphicon glyphicon-pencil"></span> Editar
+            </button>
+            <button type="button"
+                    class="btn btn-danger btn-sm js-delete-book"
+                    data-url="{% url 'book:book_delete' obj.pk %}">
+                <span class="glyphicon glyphicon-trash"></span> Deletar
+            </button>
+        </td>
+    </tr>
+{% endfor %}
