@@ -1,4 +1,4 @@
-$(function () {
+$(function(){
 
     var loadForm = function () {
         var btn = $(this);
@@ -33,14 +33,14 @@ $(function () {
         });
         return false;
     };
-
+    
+    // Create book
     $(".js-create-book").click(loadForm);
     $("#modal-book").on("submit", ".js-book-create-form", saveForm);
-
     // Update book
     $("#book-table").on("click", ".js-update-book", loadForm);
     $("#modal-book").on("submit", ".js-book-update-form", saveForm);
-
+    // Delete book
     $("#book-table").on("click", ".js-delete-book", loadForm);
     $("#modal-book").on("submit", ".js-book-delete-form", saveForm);
 
