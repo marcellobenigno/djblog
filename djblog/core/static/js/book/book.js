@@ -26,6 +26,7 @@ $(function(){
                 if (data.form_is_valid) {
                     $("#book-table tbody").html(data.html_book_list);
                     $("#modal-book").modal("hide");
+                    $(".alert").text('Salvo com Sucesso!');
                 } else {
                     $("#modal-book .modal-content").html(data.html_form);
                 }
@@ -33,7 +34,7 @@ $(function(){
         });
         return false;
     };
-    
+
     // Create book
     $(".js-create-book").click(loadForm);
     $("#modal-book").on("submit", ".js-book-create-form", saveForm);

@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.template.loader import render_to_string
@@ -21,6 +22,8 @@ def save_book_form(request, form, template_name):
             data['html_book_list'] = render_to_string('books/includes/partial_book_list.html', {
                 'object_list': object_list
             })
+            messages.success(
+                request, 'Editado com Sucesso.')
         else:
             data['form_is_valid'] = False
     context = {'form': form}
